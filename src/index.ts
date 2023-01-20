@@ -8,16 +8,14 @@ const taskNameInput: HTMLInputElement = document.querySelector(
   "#taskName"
 ) as HTMLInputElement;
 
-addTaskBtn?.addEventListener("click", (e) => {
+addTaskBtn?.addEventListener("click", (e) => addTask(e));
+
+const addTask = (e: Event) => {
   e.preventDefault();
 
   const taskName = taskNameInput.value;
 
   console.log(`Current Value: ${taskName}`);
-});
-
-const addTask = () => {
-  console.log("adding task");
 };
 
 export {};
