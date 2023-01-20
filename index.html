@@ -11,6 +11,30 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <h1 class="text-blue-500">Tailwind installed</h1>
+    <main
+      class="bg-gray-600 min-h-screen flex flex-col justify-center items-center gap-4"
+    >
+      <h1 class="text-5xl text-gray-400">TypeScript TaskList</h1>
+
+      <!-- Add new tasks -->
+      <form id="addTaskForm" class="shadow-md shadow-black p-4 rounded-lg">
+        <input
+          type="text"
+          id="taskName"
+          class="bg-transparent p-1 outline-none text-gray-100 shadow-md shadow-gray-700 rounded-md"
+        />
+        <button class="">Add task</button>
+      </form>
+
+      <!-- Existing tasks -->
+      <div>
+        <div class="flex gap-2">
+          <h2>Do groceries</h2>
+          <p>Remember the butter</p>
+          <button class="">Edit</button>
+          <button>Completed</button>
+        </div>
+      </div>
+    </main>
   </body>
 </html>
