@@ -17,12 +17,16 @@ addTaskBtn?.addEventListener("click", (e) => addTask(e));
 const addTask = (e: Event) => {
   e.preventDefault();
 
-  const taskName = taskNameInput.value;
+  const taskName: string = taskNameInput.value;
 
   console.log(`Current Value: ${taskName}`);
 
-  const newTask = document.createElement("div");
+  const newTask: HTMLDivElement = document.createElement("div");
   const taskTitle = document.createElement("h2");
+  taskTitle.textContent = "bla bla";
+  newTask.appendChild(taskTitle);
+
+  tasksList.appendChild(newTask);
 };
 
 export {};
