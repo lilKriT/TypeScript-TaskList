@@ -22,10 +22,10 @@ const addTask = (e: Event) => {
   console.log(`Current Value: ${taskName}`);
 
   const newTask: HTMLDivElement = document.createElement("div");
-  newTask.classList.add("task");
+  newTask.classList.add("task", "flex", "gap-2");
 
   const taskTitle = document.createElement("h2");
-  taskTitle.textContent = "Task";
+  taskTitle.textContent = taskNameInput.value;
   newTask.appendChild(taskTitle);
 
   const taskDescription = document.createElement("p");
