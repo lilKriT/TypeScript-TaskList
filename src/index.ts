@@ -38,11 +38,14 @@ const addTask = (e: Event) => {
 
   const taskCompletedButton = document.createElement("button");
   taskCompletedButton.textContent = "Completed";
+  taskCompletedButton.addEventListener("click", () => completeTask(newTask));
   newTask.appendChild(taskCompletedButton);
 
   tasksList.appendChild(newTask);
 };
 
-const completeTask = () => {};
+const completeTask = (task: any) => {
+  task.remove();
+};
 
 export {};
