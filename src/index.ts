@@ -18,11 +18,20 @@ addTaskBtn?.addEventListener("click", (e) =>
   handleAddTask(e, taskNameInput.value, taskDescriptionInput.value)
 );
 
+// UI Functions
 const handleAddTask = (e: Event, name: string, description: string): void => {
   e.preventDefault();
 
   addTask(name, description);
   taskNameInput.value = "";
+};
+
+const handleEditTask = () => {
+  console.log("Edit");
+};
+
+const handleSaveEdit = () => {
+  console.log("Changes saved");
 };
 
 // Task Functions
@@ -50,6 +59,7 @@ const createTaskElement = (title: string, description: string): HTMLElement => {
 
   const taskEditButton = document.createElement("button");
   taskEditButton.textContent = "Edit";
+  taskEditButton.addEventListener("click", () => handleEditTask());
   newTask.appendChild(taskEditButton);
 
   const taskCompletedButton = document.createElement("button");
