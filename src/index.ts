@@ -1,5 +1,4 @@
-console.log("Starting");
-
+// Finding elements
 const addTaskBtn: HTMLButtonElement = document.querySelector(
   "#addTask"
 ) as HTMLButtonElement;
@@ -11,9 +10,9 @@ const taskNameInput: HTMLInputElement = document.querySelector(
 const tasksList: HTMLElement = document.querySelector(
   "#tasksList"
 ) as HTMLElement;
-
 addTaskBtn?.addEventListener("click", (e) => addTask(e));
 
+// Task Functions
 const addTask = (e: Event) => {
   e.preventDefault();
 
@@ -21,6 +20,12 @@ const addTask = (e: Event) => {
 
   console.log(`Current Value: ${taskName}`);
 
+  const newTask = createTask();
+
+  tasksList.appendChild(newTask);
+};
+
+const createTask = () => {
   const newTask: HTMLDivElement = document.createElement("div");
   newTask.classList.add("task", "flex", "gap-2");
 
@@ -41,7 +46,7 @@ const addTask = (e: Event) => {
   taskCompletedButton.addEventListener("click", () => completeTask(newTask));
   newTask.appendChild(taskCompletedButton);
 
-  tasksList.appendChild(newTask);
+  return newTask;
 };
 
 const completeTask = (task: any) => {
