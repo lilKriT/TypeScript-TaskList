@@ -17,12 +17,20 @@
       <h1 class="text-5xl text-gray-400">TypeScript TaskList</h1>
 
       <!-- Add new tasks -->
-      <form id="addTaskForm" class="shadow-md shadow-black p-4 rounded-lg">
+      <form
+        id="addTaskForm"
+        class="shadow-md flex flex-col shadow-black p-4 rounded-lg"
+      >
         <input
           type="text"
           id="taskName"
           class="bg-transparent p-1 outline-none text-gray-100 shadow-md shadow-gray-700 rounded-md"
+          placeholder="Task title..."
         />
+        <textarea
+          placeholder="Longer description"
+          class="rounded p-1 resize-none"
+        ></textarea>
         <button id="addTask" class="">Add task</button>
       </form>
 

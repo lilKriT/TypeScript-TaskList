@@ -10,27 +10,24 @@ const taskNameInput: HTMLInputElement = document.querySelector(
 const tasksList: HTMLElement = document.querySelector(
   "#tasksList"
 ) as HTMLElement;
-addTaskBtn?.addEventListener("click", (e) => addTask(e));
+addTaskBtn?.addEventListener("click", (e) => addTask(e, taskNameInput.value));
 
 // Task Functions
-const addTask = (e: Event) => {
+const addTask = (e: Event, taskName: string) => {
   e.preventDefault();
 
-  const taskName: string = taskNameInput.value;
-
-  console.log(`Current Value: ${taskName}`);
-
-  const newTask = createTask();
+  const newTask = createTask(taskName);
+  taskNameInput.value = "";
 
   tasksList.appendChild(newTask);
 };
 
-const createTask = () => {
+const createTask = (title: string): HTMLElement => {
   const newTask: HTMLDivElement = document.createElement("div");
   newTask.classList.add("task", "flex", "gap-2");
 
   const taskTitle = document.createElement("h2");
-  taskTitle.textContent = taskNameInput.value;
+  taskTitle.textContent = title;
   newTask.appendChild(taskTitle);
 
   const taskDescription = document.createElement("p");
