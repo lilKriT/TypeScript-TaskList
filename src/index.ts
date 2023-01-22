@@ -7,22 +7,28 @@ const taskNameInput: HTMLInputElement = document.querySelector(
   "#taskName"
 ) as HTMLInputElement;
 
+const taskDescriptionInput: HTMLTextAreaElement = document.querySelector(
+  "#taskDescription"
+) as HTMLTextAreaElement;
+
 const tasksList: HTMLElement = document.querySelector(
   "#tasksList"
 ) as HTMLElement;
-addTaskBtn?.addEventListener("click", (e) => addTask(e, taskNameInput.value));
+addTaskBtn?.addEventListener("click", (e) =>
+  addTask(e, taskNameInput.value, taskDescriptionInput.value)
+);
 
 // Task Functions
-const addTask = (e: Event, taskName: string) => {
+const addTask = (e: Event, taskName: string, taskDescription: string) => {
   e.preventDefault();
 
-  const newTask = createTask(taskName);
+  const newTask = createTask(taskName, taskDescription);
   taskNameInput.value = "";
 
   tasksList.appendChild(newTask);
 };
 
-const createTask = (title: string): HTMLElement => {
+const createTask = (title: string, description: string): HTMLElement => {
   const newTask: HTMLDivElement = document.createElement("div");
   newTask.classList.add("task", "flex", "gap-2");
 
