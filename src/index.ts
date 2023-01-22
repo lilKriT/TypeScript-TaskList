@@ -15,26 +15,34 @@ const tasksList: HTMLElement = document.querySelector(
   "#tasksList"
 ) as HTMLElement;
 addTaskBtn?.addEventListener("click", (e) =>
-  addTask(e, taskNameInput.value, taskDescriptionInput.value)
+  handleAddTask(e, taskNameInput.value, taskDescriptionInput.value)
 );
 
-// Task Functions
-const addTask = (e: Event, taskName: string, taskDescription: string) => {
+const handleAddTask = (e: Event, name: string, description: string): void => {
   e.preventDefault();
 
-  const newTask = createTask(taskName, taskDescription);
+  addTask(name, description);
   taskNameInput.value = "";
+};
+
+// Task Functions
+const addTask = (taskName: string, taskDescription: string) => {
+  const newTask = createTaskElement(taskName, taskDescription);
 
   tasksList.appendChild(newTask);
 };
 
-const createTask = (title: string, description: string): HTMLElement => {
+const createTaskElement = (title: string, description: string): HTMLElement => {
   const newTask: HTMLDivElement = document.createElement("div");
   newTask.classList.add("task", "flex", "gap-2");
 
   const taskTitle = document.createElement("h2");
   taskTitle.textContent = title;
   newTask.appendChild(taskTitle);
+
+  const taskTitleEdit = document.createElement("input");
+  taskTitleEdit.textContent = "edit here";
+  newTask.appendChild(taskTitleEdit);
 
   const taskDescription = document.createElement("p");
   taskDescription.textContent = "Longer text here";
@@ -55,5 +63,12 @@ const createTask = (title: string, description: string): HTMLElement => {
 const completeTask = (task: any) => {
   task.remove();
 };
+
+const addExampleTasks = (): void => {
+  addTask("Buy stuff", "def");
+  addTask("Work out", "def");
+  addTask("Be cool", "def");
+};
+addExampleTasks();
 
 export {};
