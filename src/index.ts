@@ -67,7 +67,7 @@ const createTaskElement = (title: string, description: string): HTMLElement => {
 
   // Task - edit
   const taskEditDiv = document.createElement("div");
-  taskEditDiv.classList.add("taskEdit", "flex", "gap-2");
+  taskEditDiv.classList.add("taskEdit", "gap-2", "hidden");
 
   const taskTitleEdit = document.createElement("input");
   taskTitleEdit.textContent = "edit here";
@@ -75,10 +75,12 @@ const createTaskElement = (title: string, description: string): HTMLElement => {
 
   const editSaveButton = document.createElement("button");
   editSaveButton.textContent = "Save";
+  editSaveButton.addEventListener("click", () => saveEdit(newTask));
   taskEditDiv.appendChild(editSaveButton);
 
   const editCancelButton = document.createElement("button");
   editCancelButton.textContent = "Cancel";
+  editCancelButton.addEventListener("click", () => cancelEdit(newTask));
   taskEditDiv.appendChild(editCancelButton);
 
   // Adding both rows
@@ -89,15 +91,33 @@ const createTaskElement = (title: string, description: string): HTMLElement => {
 };
 
 const openEdit = (task: any) => {
-  console.log(task);
+  const taskDisplay = task.querySelector(".taskDisplay");
+  const taskEdit = task.querySelector(".taskEdit");
 
-  const taskTitle = task.querySelector("h2");
-  const taskEdit = task.querySelector("input");
-
-  taskTitle.classList.add("hidden");
-  taskTitle.classList.remove("flex");
+  taskDisplay.classList.add("hidden");
+  taskDisplay.classList.remove("flex");
   taskEdit.classList.add("flex");
   taskEdit.classList.remove("hidden");
+};
+
+const saveEdit = (task: any) => {
+  const taskDisplay = task.querySelector(".taskDisplay");
+  const taskEdit = task.querySelector(".taskEdit");
+
+  taskDisplay.classList.remove("hidden");
+  taskDisplay.classList.add("flex");
+  taskEdit.classList.remove("flex");
+  taskEdit.classList.add("hidden");
+};
+
+const cancelEdit = (task: any) => {
+  const taskDisplay = task.querySelector(".taskDisplay");
+  const taskEdit = task.querySelector(".taskEdit");
+
+  taskDisplay.classList.remove("hidden");
+  taskDisplay.classList.add("flex");
+  taskEdit.classList.remove("flex");
+  taskEdit.classList.add("hidden");
 };
 
 const completeTask = (task: any) => {
