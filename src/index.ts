@@ -92,21 +92,29 @@ const createTaskElement = (
 const openEdit = (task: any) => {
   const taskDisplay = task.querySelector(".taskDisplay");
   const taskEdit = task.querySelector(".taskEdit");
+  const currentTaskTitle = task.querySelector(".taskDisplay h2");
+  const editInput = task.querySelector(".taskEdit input");
 
   taskDisplay.classList.add("hidden");
   taskDisplay.classList.remove("flex");
   taskEdit.classList.add("flex");
   taskEdit.classList.remove("hidden");
+
+  editInput.value = currentTaskTitle.textContent;
 };
 
 const saveEdit = (task: any) => {
   const taskDisplay = task.querySelector(".taskDisplay");
   const taskEdit = task.querySelector(".taskEdit");
+  const currentTaskTitle = task.querySelector(".taskDisplay h2");
+  const editInput = task.querySelector(".taskEdit input");
 
   taskDisplay.classList.remove("hidden");
   taskDisplay.classList.add("flex");
   taskEdit.classList.remove("flex");
   taskEdit.classList.add("hidden");
+
+  currentTaskTitle.textContent = editInput.value;
 };
 
 const cancelEdit = (task: any) => {
