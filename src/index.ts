@@ -87,28 +87,30 @@ const createTaskElement = (
   newTask.appendChild(taskDisplayDiv);
   newTask.appendChild(taskEditDiv);
 
-  newTask.addEventListener("dragStart", dragStart);
-  newTask.addEventListener("dragenter", dragEnter);
-  newTask.addEventListener("dragover", dragOver);
-  newTask.addEventListener("dragleave", dragLeave);
+  newTask.addEventListener("dragStart", () => dragStart(newTask));
+  newTask.addEventListener("dragenter", () => dragEnter(newTask));
+  newTask.addEventListener("dragover", () => dragOver(newTask));
+  newTask.addEventListener("dragleave", () => dragLeave(newTask));
 
   return newTask;
 };
 
-const dragStart = () => {
+const dragStart = (_task: any) => {
   console.log("Drag Start");
 };
 
-const dragEnter = () => {
-  console.log("Drag Enter");
+const dragEnter = (_task: any) => {
+  // console.log("Drag Enter", _task);
+  _task.classList.add("bg-gray-400");
 };
 
-const dragOver = () => {
+const dragOver = (_task: any) => {
   console.log("Drag Over");
 };
 
-const dragLeave = () => {
-  console.log("Drag Leave");
+const dragLeave = (_task: any) => {
+  // console.log("Drag Leave");
+  _task.classList.remove("bg-gray-400");
 };
 
 const openEdit = (task: any) => {
