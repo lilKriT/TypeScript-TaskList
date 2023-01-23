@@ -41,6 +41,7 @@ const createTaskElement = (
   const newTask: HTMLDivElement = document.createElement("div");
   // newTask.classList.add("task", "flex", "flex-col", "gap-2");
   newTask.classList.add(...["task", "flex", "flex-col", "gap-2"]);
+  newTask.setAttribute("draggable", "true");
 
   // Task - dislpay
   const taskDisplayDiv = document.createElement("div");
@@ -50,9 +51,9 @@ const createTaskElement = (
   taskTitle.textContent = title;
   taskDisplayDiv.appendChild(taskTitle);
 
-  const taskDescription = document.createElement("p");
-  taskDescription.textContent = "Longer text here";
-  taskDisplayDiv.appendChild(taskDescription);
+  // const taskDescription = document.createElement("p");
+  // taskDescription.textContent = "Longer text here";
+  // taskDisplayDiv.appendChild(taskDescription);
 
   const taskEditButton = document.createElement("button");
   taskEditButton.textContent = "Edit";
@@ -86,7 +87,13 @@ const createTaskElement = (
   newTask.appendChild(taskDisplayDiv);
   newTask.appendChild(taskEditDiv);
 
+  newTask.addEventListener("dragstart", dragStart);
+
   return newTask;
+};
+
+const dragStart = () => {
+  console.log("Drag Start");
 };
 
 const openEdit = (task: any) => {
