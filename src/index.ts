@@ -26,10 +26,6 @@ const handleAddTask = (e: Event, name: string, description: string): void => {
   taskNameInput.value = "";
 };
 
-const handleEditTask = () => {
-  console.log(`Editing: ${this}`);
-};
-
 // Task Functions
 const addTask = (taskName: string, taskDescription: string) => {
   const newTask = createTaskElement(taskName, taskDescription);
@@ -37,7 +33,10 @@ const addTask = (taskName: string, taskDescription: string) => {
   tasksList.appendChild(newTask);
 };
 
-const createTaskElement = (title: string, description: string): HTMLElement => {
+const createTaskElement = (
+  title: string,
+  _description: string
+): HTMLElement => {
   // Task
   const newTask: HTMLDivElement = document.createElement("div");
   // newTask.classList.add("task", "flex", "flex-col", "gap-2");
