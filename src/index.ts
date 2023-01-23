@@ -27,11 +27,7 @@ const handleAddTask = (e: Event, name: string, description: string): void => {
 };
 
 const handleEditTask = () => {
-  console.log("Edit");
-};
-
-const handleSaveEdit = () => {
-  console.log("Changes saved");
+  console.log(`Editing: ${this}`);
 };
 
 // Task Functions
@@ -51,6 +47,7 @@ const createTaskElement = (title: string, description: string): HTMLElement => {
 
   const taskTitleEdit = document.createElement("input");
   taskTitleEdit.textContent = "edit here";
+  taskTitleEdit.classList.add("hidden");
   newTask.appendChild(taskTitleEdit);
 
   const taskDescription = document.createElement("p");
@@ -59,7 +56,7 @@ const createTaskElement = (title: string, description: string): HTMLElement => {
 
   const taskEditButton = document.createElement("button");
   taskEditButton.textContent = "Edit";
-  taskEditButton.addEventListener("click", () => handleEditTask());
+  taskEditButton.addEventListener("click", () => openEdit(newTask));
   newTask.appendChild(taskEditButton);
 
   const taskCompletedButton = document.createElement("button");
@@ -68,6 +65,18 @@ const createTaskElement = (title: string, description: string): HTMLElement => {
   newTask.appendChild(taskCompletedButton);
 
   return newTask;
+};
+
+const openEdit = (task: any) => {
+  console.log(task);
+
+  const taskTitle = task.querySelector("h2");
+  const taskEdit = task.querySelector("input");
+
+  taskTitle.classList.add("hidden");
+  taskTitle.classList.remove("flex");
+  taskEdit.classList.add("flex");
+  taskEdit.classList.remove("hidden");
 };
 
 const completeTask = (task: any) => {
