@@ -38,31 +38,52 @@ const addTask = (taskName: string, taskDescription: string) => {
 };
 
 const createTaskElement = (title: string, description: string): HTMLElement => {
+  // Task
   const newTask: HTMLDivElement = document.createElement("div");
-  newTask.classList.add("task", "flex", "gap-2");
+  // newTask.classList.add("task", "flex", "flex-col", "gap-2");
+  newTask.classList.add(...["task", "flex", "flex-col", "gap-2"]);
+
+  // Task - dislpay
+  const taskDisplayDiv = document.createElement("div");
+  taskDisplayDiv.classList.add("taskDisplay", "flex", "gap-2");
 
   const taskTitle = document.createElement("h2");
   taskTitle.textContent = title;
-  newTask.appendChild(taskTitle);
-
-  const taskTitleEdit = document.createElement("input");
-  taskTitleEdit.textContent = "edit here";
-  taskTitleEdit.classList.add("hidden");
-  newTask.appendChild(taskTitleEdit);
+  taskDisplayDiv.appendChild(taskTitle);
 
   const taskDescription = document.createElement("p");
   taskDescription.textContent = "Longer text here";
-  newTask.appendChild(taskDescription);
+  taskDisplayDiv.appendChild(taskDescription);
 
   const taskEditButton = document.createElement("button");
   taskEditButton.textContent = "Edit";
   taskEditButton.addEventListener("click", () => openEdit(newTask));
-  newTask.appendChild(taskEditButton);
+  taskDisplayDiv.appendChild(taskEditButton);
 
   const taskCompletedButton = document.createElement("button");
   taskCompletedButton.textContent = "Completed";
   taskCompletedButton.addEventListener("click", () => completeTask(newTask));
-  newTask.appendChild(taskCompletedButton);
+  taskDisplayDiv.appendChild(taskCompletedButton);
+
+  // Task - edit
+  const taskEditDiv = document.createElement("div");
+  taskEditDiv.classList.add("taskEdit", "flex", "gap-2");
+
+  const taskTitleEdit = document.createElement("input");
+  taskTitleEdit.textContent = "edit here";
+  taskEditDiv.appendChild(taskTitleEdit);
+
+  const editSaveButton = document.createElement("button");
+  editSaveButton.textContent = "Save";
+  taskEditDiv.appendChild(editSaveButton);
+
+  const editCancelButton = document.createElement("button");
+  editCancelButton.textContent = "Cancel";
+  taskEditDiv.appendChild(editCancelButton);
+
+  // Adding both rows
+  newTask.appendChild(taskDisplayDiv);
+  newTask.appendChild(taskEditDiv);
 
   return newTask;
 };
