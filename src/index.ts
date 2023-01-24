@@ -38,7 +38,7 @@ const createTaskElement = (
   _description: string
 ): HTMLElement => {
   // Task
-  const newTask: HTMLDivElement = document.createElement("div");
+  const newTask: HTMLLIElement = document.createElement("li");
   // newTask.classList.add("task", "flex", "flex-col", "gap-2");
   newTask.classList.add(...["task", "flex", "flex-col", "gap-2"]);
   newTask.setAttribute("draggable", "true");
@@ -89,12 +89,14 @@ const createTaskElement = (
 
   newTask.addEventListener("dragStart", () => dragStart(newTask));
   newTask.addEventListener("dragenter", () => dragEnter(newTask));
-  newTask.addEventListener("dragover", () => dragOver(newTask));
+  newTask.addEventListener("dragover", (e) => dragOver(e, newTask));
   newTask.addEventListener("dragleave", () => dragLeave(newTask));
+  newTask.addEventListener("drop", () => dragDrop(newTask));
 
   return newTask;
 };
 
+// let startIndex: number;
 const dragStart = (_task: any) => {
   console.log("Drag Start");
 };
@@ -104,12 +106,24 @@ const dragEnter = (_task: any) => {
   _task.classList.add("bg-gray-400");
 };
 
-const dragOver = (_task: any) => {
-  console.log("Drag Over");
+const dragOver = (e: Event, _task: any) => {
+  e.preventDefault();
+  // console.log(e);
+  // console.log("Drag Over");
 };
 
 const dragLeave = (_task: any) => {
   // console.log("Drag Leave");
+  _task.classList.remove("bg-gray-400");
+
+  const test = document.createElement("p");
+  test.textContent = "Added";
+
+  // console.log(_task);
+};
+
+const dragDrop = (_task: any) => {
+  console.log("Drag dropped");
   _task.classList.remove("bg-gray-400");
 };
 
