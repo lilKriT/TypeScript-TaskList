@@ -87,7 +87,7 @@ const createTaskElement = (
   newTask.appendChild(taskDisplayDiv);
   newTask.appendChild(taskEditDiv);
 
-  newTask.addEventListener("dragStart", () => dragStart(newTask));
+  newTask.addEventListener("dragstart", () => dragStart(newTask));
   newTask.addEventListener("dragenter", () => dragEnter(newTask));
   newTask.addEventListener("dragover", (e) => dragOver(e, newTask));
   newTask.addEventListener("dragleave", () => dragLeave(newTask));
@@ -96,37 +96,35 @@ const createTaskElement = (
   return newTask;
 };
 
-// let startIndex: number;
+// Drag and drop
+let movedTask: HTMLElement;
 const dragStart = (_task: any) => {
-  console.log("Drag Start");
+  movedTask = _task;
 };
 
 const dragEnter = (_task: any) => {
-  // console.log("Drag Enter", _task);
   _task.classList.add("bg-gray-400");
 };
 
 const dragOver = (e: Event, _task: any) => {
   e.preventDefault();
-  // console.log(e);
-  // console.log("Drag Over");
 };
 
 const dragLeave = (_task: any) => {
-  // console.log("Drag Leave");
   _task.classList.remove("bg-gray-400");
 
   const test = document.createElement("p");
   test.textContent = "Added";
-
-  // console.log(_task);
 };
 
-const dragDrop = (_task: any) => {
-  console.log("Drag dropped");
+const dragDrop = (_task: HTMLElement) => {
+  console.log(_task);
+
+  _task.after(movedTask);
   _task.classList.remove("bg-gray-400");
 };
 
+// Task functions
 const openEdit = (task: any) => {
   const taskDisplay = task.querySelector(".taskDisplay");
   const taskEdit = task.querySelector(".taskEdit");
