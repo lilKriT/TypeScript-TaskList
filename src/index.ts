@@ -58,14 +58,32 @@ const createTaskElement = (title: string): HTMLElement => {
 
   const editButton = document.createElement("button");
   editButton.textContent = "Edit";
-  editButton.classList.add(...["bg-orange-400", "px-4", "py-2", "rounded"]);
+  editButton.classList.add(
+    ...[
+      "bg-orange-400",
+      "px-4",
+      "py-2",
+      "rounded",
+      "active:scale-90",
+      "hover:bg-orange-700",
+      "duration-150",
+    ]
+  );
   editButton.addEventListener("click", () => openEdit(newTask));
   taskDisplayDiv.appendChild(editButton);
 
   const completedButton = document.createElement("button");
   completedButton.textContent = "Done!";
   completedButton.classList.add(
-    ...["bg-emerald-500", "px-4", "py-2", "rounded"]
+    ...[
+      "bg-emerald-500",
+      "px-4",
+      "py-2",
+      "rounded",
+      "active:scale-90",
+      "hover:bg-emerald-700",
+      "duration-150",
+    ]
   );
   completedButton.addEventListener("click", () => completeTask(newTask));
   taskDisplayDiv.appendChild(completedButton);
@@ -76,13 +94,30 @@ const createTaskElement = (title: string): HTMLElement => {
 
   const taskTitleEdit = document.createElement("input");
   taskTitleEdit.textContent = "edit here";
-  taskTitleEdit.classList.add("grow");
+  taskTitleEdit.classList.add(
+    "grow",
+    "px-4",
+    "py-2",
+    "bg-white/5",
+    "border-t",
+    "border-l",
+    "border-white/20",
+    "backgdrop-blur"
+  );
   taskEditDiv.appendChild(taskTitleEdit);
 
   const editCancelButton = document.createElement("button");
   editCancelButton.textContent = "Cancel";
   editCancelButton.classList.add(
-    ...["bg-orange-400", "px-4", "py-2", "rounded"]
+    ...[
+      "bg-orange-400",
+      "px-4",
+      "py-2",
+      "rounded",
+      "active:scale-90",
+      "duration-150",
+      "hover:bg-orange-700",
+    ]
   );
   editCancelButton.addEventListener("click", () => cancelEdit(newTask));
   taskEditDiv.appendChild(editCancelButton);
@@ -90,7 +125,15 @@ const createTaskElement = (title: string): HTMLElement => {
   const editSaveButton = document.createElement("button");
   editSaveButton.textContent = "Save";
   editSaveButton.classList.add(
-    ...["bg-emerald-500", "px-4", "py-2", "rounded"]
+    ...[
+      "bg-emerald-500",
+      "px-4",
+      "py-2",
+      "rounded",
+      "active:scale-90",
+      "duration-150",
+      "hover:bg-emerald-700",
+    ]
   );
   editSaveButton.addEventListener("click", () => saveEdit(newTask));
   taskEditDiv.appendChild(editSaveButton);
@@ -180,9 +223,9 @@ const completeTask = (task: any) => {
 };
 
 const addExampleTasks = (): void => {
-  addTask("Buy stuff", "def");
-  addTask("Work out", "def");
-  addTask("Be cool", "def");
+  addTask("Buy stuff");
+  addTask("Work out");
+  addTask("Be cool");
 };
 addExampleTasks();
 
