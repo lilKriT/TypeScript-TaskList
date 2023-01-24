@@ -167,9 +167,7 @@ const dragOver = (e: Event, _task: any) => {
 
 const dragLeave = (_task: any) => {
   _task.classList.remove("bg-gray-400");
-
-  const test = document.createElement("p");
-  test.textContent = "Added";
+  console.log("leaving");
 };
 
 const dragDrop = (_task: HTMLElement) => {

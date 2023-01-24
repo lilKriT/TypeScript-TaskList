@@ -11,4 +11,9 @@
     writing-mode: vertical-lr;
     rotate: 180deg;
   }
+
+  .taskDisplay,
+  .taskEdit {
+    pointer-events: none;
+  }
 }
