@@ -32,25 +32,32 @@ const addTask = (taskName: string) => {
 const createTaskElement = (title: string): HTMLElement => {
   // Task
   const newTask: HTMLLIElement = document.createElement("li");
+  newTask.classList.add("border-b", "rounded", "pl-2", "py-2", "text-white");
+
   // newTask.classList.add("task", "flex", "flex-col", "gap-2");
   newTask.classList.add(...["task", "flex", "flex-col", "gap-2"]);
   newTask.setAttribute("draggable", "true");
 
   // Task - dislpay
   const taskDisplayDiv = document.createElement("div");
-  taskDisplayDiv.classList.add("taskDisplay", "flex", "gap-2");
+  taskDisplayDiv.classList.add("taskDisplay", "flex", "gap-2", "items-center");
 
   const taskTitle = document.createElement("h2");
   taskTitle.textContent = title;
+  taskTitle.classList.add("grow");
   taskDisplayDiv.appendChild(taskTitle);
 
   const taskEditButton = document.createElement("button");
   taskEditButton.textContent = "Edit";
+  taskEditButton.classList.add(...["bg-orange-400", "px-4", "py-2", "rounded"]);
   taskEditButton.addEventListener("click", () => openEdit(newTask));
   taskDisplayDiv.appendChild(taskEditButton);
 
   const taskCompletedButton = document.createElement("button");
-  taskCompletedButton.textContent = "Completed";
+  taskCompletedButton.textContent = "Done!";
+  taskCompletedButton.classList.add(
+    ...["bg-emerald-500", "px-4", "py-2", "rounded"]
+  );
   taskCompletedButton.addEventListener("click", () => completeTask(newTask));
   taskDisplayDiv.appendChild(taskCompletedButton);
 

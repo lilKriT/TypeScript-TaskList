@@ -9,6 +9,7 @@ module.exports = {
       },
       backgroundImage: {
         neonHighway: "url(/src/assets/neon-highway.webp)",
+        neonHCity: "url(/src/assets/neon-city.webp)",
         glassGradient:
           "linear-gradient(45deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .02))",
       },
