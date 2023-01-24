@@ -7,36 +7,29 @@ const taskNameInput: HTMLInputElement = document.querySelector(
   "#taskName"
 ) as HTMLInputElement;
 
-const taskDescriptionInput: HTMLTextAreaElement = document.querySelector(
-  "#taskDescription"
-) as HTMLTextAreaElement;
-
 const tasksList: HTMLElement = document.querySelector(
   "#tasksList"
 ) as HTMLElement;
 addTaskBtn?.addEventListener("click", (e) =>
-  handleAddTask(e, taskNameInput.value, taskDescriptionInput.value)
+  handleAddTask(e, taskNameInput.value)
 );
 
 // UI Functions
-const handleAddTask = (e: Event, name: string, description: string): void => {
+const handleAddTask = (e: Event, name: string): void => {
   e.preventDefault();
 
-  addTask(name, description);
+  addTask(name);
   taskNameInput.value = "";
 };
 
 // Task Functions
-const addTask = (taskName: string, taskDescription: string) => {
-  const newTask = createTaskElement(taskName, taskDescription);
+const addTask = (taskName: string) => {
+  const newTask = createTaskElement(taskName);
 
   tasksList.appendChild(newTask);
 };
 
-const createTaskElement = (
-  title: string,
-  _description: string
-): HTMLElement => {
+const createTaskElement = (title: string): HTMLElement => {
   // Task
   const newTask: HTMLLIElement = document.createElement("li");
   // newTask.classList.add("task", "flex", "flex-col", "gap-2");
@@ -50,10 +43,6 @@ const createTaskElement = (
   const taskTitle = document.createElement("h2");
   taskTitle.textContent = title;
   taskDisplayDiv.appendChild(taskTitle);
-
-  // const taskDescription = document.createElement("p");
-  // taskDescription.textContent = "Longer text here";
-  // taskDisplayDiv.appendChild(taskDescription);
 
   const taskEditButton = document.createElement("button");
   taskEditButton.textContent = "Edit";
